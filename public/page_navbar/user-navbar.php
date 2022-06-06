@@ -46,8 +46,8 @@
                               </li>
                           </ul>
                       </div>
-                      <a class="btn_1 d-none d-lg-block" href="<?= base_url('logout') ?>">Sign Out</a>
-                      <a class="btn_1 d-none d-lg-block" href="<?= base_url('login') ?>">Sign In</a>
+                      <a class="btn_1 d-none d-lg-block" href="<?= site_url('auth/logout')  ?>">Sign Out</a>
+                      <a class="btn_1 d-none d-lg-block" href="<?= site_url('auth/login') ?>">Sign In</a>
                   </nav>
               </div>
           </div>

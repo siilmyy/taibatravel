@@ -72,7 +72,7 @@
                             <div class="card-footer">
                                 <?php if ($config->allowRegistration) : ?>
                                     <div class="d-flex justify-content-center links mb-3">
-                                        Don't have an account?<a href="<?= route_to('register') ?>">Sign Up</a>
+                                        Don't have an account?<a href="<?= site_url('auth/register')  ?>">Sign Up</a>
                                     </div>
                                 <?php endif; ?>
                             </div>
