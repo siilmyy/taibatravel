@@ -25,9 +25,9 @@ class Userbaru extends \CodeIgniter\Database\Migration
 			'password' => [
 				'type' => 'TEXT',
 			],
-			// 'salt' => [
-			// 	'type' => 'TEXT'
-			// ],
+			'salt' => [
+				'type' => 'TEXT'
+			],
 			// 'avatar' => [
 			// 	'type' => 'TEXT',
 			// 	'null' => TRUE,

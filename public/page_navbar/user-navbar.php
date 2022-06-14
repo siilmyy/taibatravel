@@ -4,7 +4,7 @@
           <div class="row align-items-center">
               <div class="col-lg-12">
                   <nav class="navbar navbar-expand-lg navbar-light pb-3">
-                      <a class="navbar-brand" href="index.html"> <img src="<?= base_url() ?>/img/taibatravel.png" alt="logo"> </a>
+                      <a class="navbar-brand" href="<?= site_url('home/index') ?>"> <img src="<?= base_url() ?>/img/taibatravel.png" alt="logo"> </a>
                       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                           <span class="menu_icon"><i class="fas fa-bars"></i></span>
                       </button>
@@ -27,28 +27,21 @@
                                   <a class="nav-link" href="#promo">Promo</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link" href="virtualtour.php">Virtual Tour</a>
+                                  <a class="nav-link" href="<?= site_url('virtual') ?>">Virtual Tour</a>
                               </li>
-
-                              <li class="nav-item dropdown">
-                                  <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      Manage Content
-                                  </a>
-                                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                      <a class="dropdown-item" href="#"> Manage Tour</a>
-                                      <a class="dropdown-item" href="#">Manage Gallery</a>
-                                  </div>
-                              </li>
-
-
                               <li class="nav-item">
                                   <a class="nav-link" href="#about_us">About Us</a>
                               </li>
+                              <li>
+                                  <a class="btn_1 d-block mx-3 mb-3 d-lg-none" href="<?= site_url('auth/login') ?>">Log in</a>
+                              </li>
+                              <li>
+                                  <a class="btn_1 d-block mx-3 mb-3 d-lg-none" href="<?= site_url('auth/logout') ?>">Log out</a>
+                              </li>
                           </ul>
                       </div>
-                      <a class="btn_1 d-none d-lg-block" href="<?= site_url('auth/logout')  ?>">Sign Out</a>
-                      <a class="btn_1 d-none d-lg-block" href="<?= site_url('auth/login') ?>">Sign In</a>
-                  </nav>
+                      <a class="btn_1 d-none d-lg-block" href="<?= site_url('auth/login') ?>">Log in</a>
+                      <a class="btn_1 d-none d-lg-block" href="<?= site_url('auth/logout') ?>">Log out</a>
               </div>
           </div>
       </div>

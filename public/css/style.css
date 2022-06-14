@@ -27,6 +27,7 @@ body {
   margin-top: 1rem;
 }
 
+
 /* line 9, /Applications/MAMP/htdocs/palash/cl/july 2019/189 travel/189 travel html/sass/_common.scss */
 .message_submit_form:focus {
   outline: none;
@@ -37,6 +38,61 @@ input:hover,
 input:focus {
   outline: none !important;
 }
+
+/* class banner pemisah */
+.section {
+  background-image: url("../img/beach_banner.jpg");
+}
+.section .card{
+  background-color: rgba(0, 0, 0, 0.4) /* Green background with 30% opacity */
+  
+}
+/* banner 2 */
+.section2 {
+  background-image: url("../img/bukit_banner.jpg");
+}
+.section2 .card{
+  background-color: rgba(0, 0, 0, 0.4) /* Green background with 30% opacity */ 
+}
+/* banner 3 */
+.section3 {
+  background-image: url("../img/beach2_banner.jpg");
+}
+.section3 .card{
+  background-color: rgba(0, 0, 0, 0.4) /* Green background with 30% opacity */
+  
+}
+
+#call-to-action {
+  padding: 120px 0px;
+  background-color: transparent;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+.cta-content h2 {
+  font-size: 36px;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: rgb(255, 255, 255);
+  letter-spacing: 1px;
+  
+}
+
+.cta-content h2 em {
+  font-style: normal;
+  color: #ffcc00;
+}
+
+.cta-content p {
+  font-size: 16px;
+  color: rgb(255, 255, 255);
+  margin: -18px 0px 15px 0px;
+}
+
+/* class banner pemisah selesai */
 
 /* line 18, /Applications/MAMP/htdocs/palash/cl/july 2019/189 travel/189 travel html/sass/_common.scss */
 .section_padding {
@@ -65,6 +121,7 @@ input:focus {
   .section_padding {
     padding: 70px 0px;
   }
+  
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
@@ -629,7 +686,7 @@ ul {
 .btn_2 {
   display: inline-block;
   padding: 18.5px 40px;
-  border-radius: 5px;
+  /* bonavbarder-radius: 5px; */
   background-color: #fff;
   font-size: 15px;
   font-family: "Poppins", sans-serif;
@@ -1002,7 +1059,7 @@ ul {
     z-index: 9999 !important;
     position: absolute;
     left: 0;
-    top: 50px;
+    top: 85px;
     width: 100%;
     background-color: #fff;
     text-align: center !important;
@@ -1031,6 +1088,7 @@ ul {
   .navbar-light .navbar-toggler {
     border-color: transparent;
   }
+
 
   /* line 241, /Applications/MAMP/htdocs/palash/cl/july 2019/189 travel/189 travel html/sass/_menu.scss */
   .menu_icon i {
@@ -1093,7 +1151,7 @@ ul {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
-  height: 1050px;
+  min-height: 100vh;
   /*background-color: #ffcc00;*/
 }
 
@@ -1116,6 +1174,8 @@ ul {
 .banner_part .banner_text {
   padding-top: 235px;
 }
+
+
 
 /* line 28, /Applications/MAMP/htdocs/palash/cl/july 2019/189 travel/189 travel html/sass/_banner.scss */
 .banner_part .banner_text h5 {
@@ -1177,6 +1237,31 @@ ul {
     margin-bottom: 15px;
     line-height: 1.3;
   }
+
+  .banner_part .banner_text {
+    padding-top: 170px;
+  }
+  .banner_part .banner_text h5 {
+    font-size: 22px;
+  }
+  .banner_part .banner_text h6 {
+    font-size: 22px;
+  }
+
+  .banner_part {
+    position: relative;
+    background-image: url("../img/banner_bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    /*background-color: #ffcc00;*/
+  }
+
+}
+
+/* register part */
+.card-body{
+  height: fit-content !important;
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
@@ -1331,8 +1416,10 @@ ul {
 }
 
 /********* sign in *************/
+/* .sign_in{
+  width: fit-content;
+} */
 .sign_in .inhere .card {
-  height: 370px;
   margin-top: auto;
   margin-bottom: auto;
   width: 400px;
@@ -1409,12 +1496,12 @@ input:focus {
 }
 
 .sign_in .inhere {
-  margin: 300px;
+  margin: 200px;
 }
 
 /* sign up */
 
-.sign_up .inhere {
+/* .sign_up .inhere {
   margin: 300px !important;
   text-align: center;
   font-family: "poppins, sans-serif";
@@ -1425,7 +1512,7 @@ input:focus {
   margin-bottom: auto;
   margin-left: 20rem;
   background-color: rgba(0, 0, 0, 0.5) !important;
-}
+} */
 
 /************about_us css start***************/
 

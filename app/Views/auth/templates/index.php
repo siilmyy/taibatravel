@@ -34,7 +34,7 @@
     <header class="main_menu home_menu">
         <div class="container">
             <div class="col-6">
-                <a class="navbar-brand" href="<?= route_to('/user/index') ?>"> <img src="<?= base_url() ?>/img/taibatravel.png" alt="logo"> </a>
+                <a class="navbar-brand" href="<?= site_url('home/index') ?>"> <img src="<?= base_url() ?>/img/taibatravel.png" alt="logo"> </a>
             </div>
         </div>
     </header>

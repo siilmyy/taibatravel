@@ -11,70 +11,99 @@
                     <div class="d-flex justify-content-center h-100">
                         <div class="card">
                             <div class="card-header">
-                                <h3><?= lang('Auth.loginTitle') ?></h3>
+                                <?php
+                                $username = [
+                                    'name' => 'username',
+                                    'id' => 'username',
+                                    'value' => null,
+                                    'class' => 'form-control',
+                                    'placeholder' => 'username'
+                                ];
+
+                                $password = [
+                                    'name' => 'password',
+                                    'id' => 'password',
+                                    'class' => 'form-control',
+                                    'placeholder' => 'password'
+                                ];
+
+                                $session = session();
+                                $errors = $session->getFlashdata('errors');
+
+                                ?>
+
+                                <!-- jika ada error -->
+                                <?php if ($errors != null) : ?>
+                                    <div class="alert alert-danger" role="alert">
+                                        <h4 class="alert-heading">Terjadi Kesalahan</h4>
+                                        <hr>
+                                        <p class="mb-0">
+                                            <?php
+                                            foreach ($errors as $err) {
+                                                echo $err . '<br>';
+                                            }
+                                            ?>
+                                        </p>
+                                    </div>
+                                <?php endif ?>
+
+                                <h3>Log in</h3>
                                 <div class="d-flex justify-content-end social_icon">
-
                                     <span><i class="fab fa-google-plus-square"></i></span>
-
                                 </div>
                             </div>
+                            <?= form_open('Auth/login') ?>
                             <div class="logincard card-body">
-                                <?= view('Myth\Auth\Views\_message_block') ?>
-                                <form action="<?= route_to('login') ?>" method="post">
-                                    <?= csrf_field() ?>
-
-
-                                    <?php if ($config->validFields === ['email']) : ?>
-                                        <div class="form-group">
-                                            <label for="login"><?= lang('Auth.email') ?></label>
-                                            <input type="email" class="form-control <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" name="login" placeholder="<?= lang('Auth.email') ?>">
-                                            <div class="invalid-feedback">
-                                                <?= session('errors.login') ?>
-                                            </div>
-                                        </div>
-                                    <?php else : ?>
-
-                                        <div class="input-group form-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" name="login" placeholder="<?= lang('Auth.emailOrUsername') ?>">
-                                            <div class="invalid-feedback">
-                                                <?= session('errors.login') ?>
-                                            </div>
-                                        </div>
-
-                                    <?php endif; ?>
-                                    <div class="input-group form-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-key"></i></span>
-                                        </div>
-                                        <input type="password" name="password" class="form-control  <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" placeholder="<?= lang('Auth.password') ?>">
-                                        <div class="invalid-feedback">
-                                            <?= session('errors.password') ?>
-                                        </div>
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
                                     </div>
-                                    <?php if ($config->allowRemembering) : ?>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input type="checkbox" name="remember" class="form-check-input text-white" <?php if (old('remember')) : ?> checked <?php endif ?>>
-                                                <?= lang('Auth.rememberMe') ?>
-                                            </label>
-                                        </div>
-                                    <?php endif; ?>
-
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-warning btn-block mt-3"><?= lang('Auth.loginAction') ?></button>
+                                    <div class="d-none">
+                                        <?= form_label("Username", "username") ?>
                                     </div>
+                                    <?= form_input($username) ?>
+                                </div>
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    <div class="d-none">
+                                        <?= form_label("Password", "password") ?>
+                                    </div>
+                                    <?= form_password($password) ?>
+                                </div>
+                                <div class="text-right form-group ">
+                                    <?= form_submit('submit', 'Submit', ['class' => 'btn btn-warning btn-block mt-3']) ?>
+                                </div>
+                                <?= form_close() ?>
+                                <!-- <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control " name="login" placeholder="username">
+                                    <div class="invalid-feedback">
 
-                                </form>
+                                    </div>
+                                </div>
+
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    <input type="password" name="password" class="form-control " placeholder="password">
+                                    <div class="invalid-feedback">
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-warning btn-block mt-3">log in</button>
+                                </div> -->
                             </div>
                             <div class="card-footer">
-                                <?php if ($config->allowRegistration) : ?>
-                                    <div class="d-flex justify-content-center links mb-3">
-                                        Don't have an account?<a href="<?= site_url('auth/register')  ?>">Sign Up</a>
-                                    </div>
-                                <?php endif; ?>
+                                <div class="d-flex justify-content-center links mb-3">
+                                    Don't have an account?<a href="<?= site_url('auth/register')  ?>">Sign Up</a>
+                                </div>
+
                             </div>
                         </div>
                     </div>
