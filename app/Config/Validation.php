@@ -91,4 +91,58 @@ class Validation
             'required' => '{field} Harus Diisi',
         ],
     ];
+
+    public $banner = [
+        'nama' => [
+            'rules' => 'required',
+        ],
+        'harga' => [
+            'rules' => 'required|is_natural',
+        ],
+        'stok' => [
+            'rules' => 'required|is_natural',
+        ],
+        'gambar' => [
+            'rules' => 'uploaded[gambar]',
+        ],
+        'lama_tour' => [
+            'rules' => 'required|is_natural',
+        ],
+        'deskripsi' => [
+            'rules' => 'required',
+        ],
+        'id_kategori' => [
+            'rules' => 'required',
+        ]
+
+    ];
+
+    public $banner_errors = [
+        'nama' => [
+            'required' => '{field} Harus diisi',
+
+        ],
+        'harga' => [
+            'required' => '{field} Harus diisi',
+            'is_natural' => '{field} Tidak Boleh Negatif',
+        ],
+        'stok' => [
+            'required' => '{field} Harus diisi',
+            'is_natural' => '{field} Tidak Boleh Negatif',
+        ],
+        'gambar' => [
+            'uploaded' => '{field} Harus di upload',
+        ],
+        'lama_tour' => [
+            'required' => '{field} Harus diisi',
+            'is_natural' => '{field} Tidak Boleh Negatif',
+        ],
+        'deskripsi' => [
+            'required' => '{field} Harus diisi',
+        ],
+        'id_kategori' => [
+            'required' => '{field} Harus diisi',
+        ]
+
+    ];
 }

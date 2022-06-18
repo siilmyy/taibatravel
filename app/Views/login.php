@@ -2,7 +2,7 @@
 <!--::header part start::-->
 <?= $this->section('content'); ?>
 
-<!-- sign in end-->
+<!-- sign in -->
 <section class="banner_part">
     <div class="sign_in container">
         <div class="sign_in row justify-content-center">
@@ -76,28 +76,6 @@
                                     <?= form_submit('submit', 'Submit', ['class' => 'btn btn-warning btn-block mt-3']) ?>
                                 </div>
                                 <?= form_close() ?>
-                                <!-- <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control " name="login" placeholder="username">
-                                    <div class="invalid-feedback">
-
-                                    </div>
-                                </div>
-
-                                <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-key"></i></span>
-                                    </div>
-                                    <input type="password" name="password" class="form-control " placeholder="password">
-                                    <div class="invalid-feedback">
-
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-warning btn-block mt-3">log in</button>
-                                </div> -->
                             </div>
                             <div class="card-footer">
                                 <div class="d-flex justify-content-center links mb-3">

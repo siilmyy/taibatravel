@@ -35,6 +35,9 @@ class Banner extends \CodeIgniter\Database\Migration
             'deskripsi' => [
                 'type' => 'TEXT',
             ],
+            'jenis_tour' => [
+                'type' => 'ENUM',
+            ],
             'created_by' => [
                 'type' => 'INT',
                 'constraint' => 11,
