@@ -25,12 +25,18 @@ img {
   max-width: 100%;
 }
 
+.ck-editor__editable_inline{
+  min-height: 200px !important;
+}
 
 /* Navbar Brand */
 .navbar-brand {
-  width: 12rem;
+  width: 8rem;
   margin-top: 1rem;
 }
+.ftco-animate {
+  opacity: 0;
+  visibility: hidden; }
 
 /* tabeltambah di create */
 .tabeltambah {
@@ -42,8 +48,16 @@ img {
   font-style: bold;
 }
 
+.gambar {
+  border-radius: 2rem;
+  border:10px solid #fff;
+
+}
 /* end tabeltambah */
 
+#harga .h6 {
+  text-decoration: line-through
+}
 
 /* line 9, /Applications/MAMP/htdocs/palash/cl/july 2019/189 travel/189 travel html/sass/_common.scss */
 .message_submit_form:focus {
@@ -58,10 +72,10 @@ input:focus {
 
 /* class banner pemisah */
 .section {
-  background-image: url("../img/beach_banner.jpg");
+  background-image: url("../img/kabah.jpg");
 }
 .section .card{
-  background-color: rgba(0, 0, 0, 0.4) /* Green background with 30% opacity */
+  background-color: rgba(0, 0, 0, 0.7) /* Green background with 30% opacity */
   
 }
 /* banner 2 */
@@ -79,11 +93,29 @@ input:focus {
   background-color: rgba(0, 0, 0, 0.4) /* Green background with 30% opacity */
   
 }
+/* banner 4 */
+.section4 {
+  background-image: url("../img/sky.jpg");
+ 
+}
+.section4 .card{
+  background-color: rgba(0, 0, 0, 0.4) /* Green background with 30% opacity */
+  
+}
 
 #call-to-action {
-  padding: 120px 0px;
+  padding: 80px 0px;
   background-color: transparent;
   background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+#call-to-action2 {
+  padding: 50px 0px;
+  background-color: transparent;
+  background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
@@ -98,11 +130,24 @@ input:focus {
   
 }
 
+.cta-content h3 {
+  font-size: 20px;
+  text-transform: lowercase;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+  letter-spacing: 1px;
+  
+}
+
 .cta-content h2 em {
   font-style: normal;
   color: #ffcc00;
 }
 
+.cta-content h3 em {
+  font-style: normal;
+  color: #ffcc00;
+}
 .cta-content p {
   font-size: 16px;
   color: rgb(255, 255, 255);
@@ -312,7 +357,7 @@ p {
   font-size: 16px;
   font-weight: 300;
   margin-bottom: 0px;
-  color: #7a7a7a;
+  color: #000000;
   font-weight: 300;
 }
 
@@ -668,7 +713,7 @@ ul {
 /* line 36, /Applications/MAMP/htdocs/palash/cl/july 2019/189 travel/189 travel html/sass/_button.scss */
 .btn_1 {
   display: inline-block;
-  padding: 13px 40px;
+  padding: 5px 10px;
   border-radius: 50px;
   font-size: 15px;
   font-family: "Poppins", sans-serif;
@@ -693,7 +738,7 @@ ul {
 
   /* line 36, /Applications/MAMP/htdocs/palash/cl/july 2019/189 travel/189 travel html/sass/_button.scss */
   .btn_1 {
-    padding: 10px 30px;
+    padding: 5px 10px;
     margin-top: 20px;
   }
 }
@@ -702,7 +747,7 @@ ul {
 
   /* line 36, /Applications/MAMP/htdocs/palash/cl/july 2019/189 travel/189 travel html/sass/_button.scss */
   .btn_1 {
-    padding: 10px 30px;
+    padding: 5px 10px;
     margin-top: 20px;
   }
 }
@@ -711,7 +756,7 @@ ul {
 
   /* line 36, /Applications/MAMP/htdocs/palash/cl/july 2019/189 travel/189 travel html/sass/_button.scss */
   .btn_1 {
-    padding: 10px 30px;
+    padding: 5px 10px;
     margin-top: 25px;
   }
 }
@@ -1064,6 +1109,9 @@ ul {
   .main_menu {
     padding: 26px 0px;
   }
+.detail {
+  padding-top: 100px !important;
+}
 
   /* line 188, /Applications/MAMP/htdocs/palash/cl/july 2019/189 travel/189 travel html/sass/_menu.scss */
   .home_menu .main-menu-item {
@@ -1189,36 +1237,35 @@ ul {
 /* line 2, /Applications/MAMP/htdocs/palash/cl/july 2019/189 travel/189 travel html/sass/_banner.scss */
 
 .banner_part {
-  position: relative;
+  /* position: relative; */
   background-image: url("../img/banner_bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: bottom;
+  background-position: middle;
   min-height: 100vh;
-  /*background-color: #ffcc00;*/
+  /* background-color: #ffcc00; */
 }
 
-/* slide photo */
-.banner_part .photoslide {
-  padding-top: 200px;
-  margin-top: 10rem;
+.banner_baru{
+  min-height: 100vh;
 }
-
 
 @media (max-width: 991px) {
 
   /* line 2, /Applications/MAMP/htdocs/palash/cl/july 2019/189 travel/189 travel html/sass/_banner.scss */
   .banner_part {
-    height: 700px;
+    min-height: 100vh;
   }
 }
 
 /* line 26, /Applications/MAMP/htdocs/palash/cl/july 2019/189 travel/189 travel html/sass/_banner.scss */
 .banner_part .banner_text {
-  padding-top: 235px;
+  padding-top: 180px;
 }
 
-
+.banner_part .photoslide {
+  padding-bottom: 10rem !important;
+}
 
 /* line 28, /Applications/MAMP/htdocs/palash/cl/july 2019/189 travel/189 travel html/sass/_banner.scss */
 .banner_part .banner_text h5 {
@@ -1538,20 +1585,11 @@ input:focus {
   margin: 200px;
 }
 
-/* sign up */
-
-/* .sign_up .inhere {
-  margin: 300px !important;
-  text-align: center;
-  font-family: "poppins, sans-serif";
+/* view galeri */
+.viewgaleri .card{
+  width: fit-content !important;
 }
-.sign_up .inhere .card {
-  height: 370px;
-  margin-top: auto;
-  margin-bottom: auto;
-  margin-left: 20rem;
-  background-color: rgba(0, 0, 0, 0.5) !important;
-} */
+/* view galeri selesai */
 
 /************about_us css start***************/
 
@@ -1567,6 +1605,12 @@ input:focus {
   font-family: 'poppins, sans-serif';
   font-weight: 300 !important;
 }
+
+/* buat card vt */
+.lebar .card-body{
+  width: fit-content;
+}
+/* selesai card */
 
 /**********************footer part css*******************/
 /* line 2, /Applications/MAMP/htdocs/palash/cl/july 2019/189 travel/189 travel html/sass/_footer.scss */
@@ -1642,7 +1686,6 @@ input:focus {
     line-height: 1.2em;
   }
 }
-
 /* line 127, /Applications/MAMP/htdocs/palash/cl/july 2019/189 travel/189 travel html/sass/_elements.scss */
 /* .typography h1,
   .typography h2,

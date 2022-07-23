@@ -1,4 +1,4 @@
-<?= $this->extend('auth/templates/index'); ?>
+<?= $this->extend('layout2'); ?>
 <!--::header part start::-->
 <?= $this->section('content'); ?>
 <!-- sign in end-->
@@ -110,36 +110,14 @@
                                 <div class="text-right form-group ">
                                     <?= form_submit('submit', 'Submit', ['class' => 'btn btn-warning btn-block mt-3']) ?>
                                 </div>
-                                <!-- <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                    </div>
-                                    <input type="email" class="form-control" value id="email" name="email" aria-describedby="emailHelp" placeholder="email" value="email">
-                                </div>
-                                <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" value id="username" placeholder="username" value="username" name="username">
-                                </div>
-                                <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-key"></i></span>
-                                    </div>
-                                    <input type="password" name="password" value id="password" class="form-control" placeholder="password" autocomplete="off">
-                                </div>
-                                <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-key"></i></span>
-                                    </div>
-                                    <input type="password" name="repeatPassword" value id="repeatPassword" class="form-control" placeholder="confirm password" autocomplete="off">
-                                </div> -->
-                                <!-- <button type="submit" class="form-group btn btn-warning btn-block mt-3" value="Submit">sign up</button> -->
                                 <?= form_close('') ?>
                             </div>
                             <div class="card-footer">
                                 <div class="d-flex justify-content-center links">
                                     <p class='text-light'>Already Registered? <a href="<?= site_url('auth/login') ?>">Sign in</a></p>
+                                </div>
+                                <div class="d-flex justify-content-center links mb-3">
+                                    Back to<a href="<?= site_url('home/index')  ?>">Home</a>
                                 </div>
                             </div>
                         </div>

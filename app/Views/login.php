@@ -1,7 +1,5 @@
-<?= $this->extend('auth/templates/index'); ?>
-<!--::header part start::-->
-<?= $this->section('content'); ?>
-
+<?= $this->extend('layout2') ?>
+<?= $this->section('content') ?>
 <!-- sign in -->
 <section class="banner_part">
     <div class="sign_in container">
@@ -78,8 +76,11 @@
                                 <?= form_close() ?>
                             </div>
                             <div class="card-footer">
-                                <div class="d-flex justify-content-center links mb-3">
+                                <div class="d-flex justify-content-center links mb-2">
                                     Don't have an account?<a href="<?= site_url('auth/register')  ?>">Sign Up</a>
+                                </div>
+                                <div class="d-flex justify-content-center links mb-3">
+                                    Back to<a href="<?= site_url('home/index')  ?>">Home</a>
                                 </div>
 
                             </div>

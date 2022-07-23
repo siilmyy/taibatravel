@@ -9,6 +9,7 @@ use CodeIgniter\Filters\Honeypot;
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\SecureHeaders;
 
+
 class Filters extends BaseConfig
 {
     /**
@@ -23,6 +24,9 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
+        'auth' => \App\Filters\Auth::class,
+        'isLoggedIn' => \App\Filters\Auth::class,
+        'role' => \App\Filters\Admin::class,
     ];
 
     /**
@@ -64,5 +68,18 @@ class Filters extends BaseConfig
      *
      * @var array
      */
-    public $filters = [];
+    public $filters = [
+        'isLoggedIn' => [
+            'before' =>
+            [
+                '/daftar/*', '/daftar_diskon/*', 'banner/create', 'banner/update', 'banner/index', 'galeri/create', 'galeri/update', 'galeri/index', 'payment/*',
+            ]
+        ],
+        'role' => [
+            'before' =>
+            [
+                'banner/create', 'banner/update', 'banner/index', 'galeri/create', 'galeri/update', 'galeri/index',
+            ]
+        ]
+    ];
 }

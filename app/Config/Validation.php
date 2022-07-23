@@ -82,6 +82,31 @@ class Validation
         ],
     ];
 
+
+    public $transaksi = [
+        'id_banner' => [
+            'rules' => 'required',
+        ],
+        'id_pembeli' => [
+            'rules' => 'required',
+        ],
+        'jumlah' => [
+            'rules' => 'required',
+        ],
+        'total_harga' => [
+            'rules' => 'required',
+        ],
+        'total_dp' => [
+            'rules' => 'required',
+        ],
+        'handphone' => [
+            'rules' => 'required',
+        ],
+        'alamat' => [
+            'rules' => 'required',
+        ]
+    ];
+
     public $login_errors = [
         'username' => [
             'required' => '{field} Harus Diisi',
@@ -99,6 +124,9 @@ class Validation
         'harga' => [
             'rules' => 'required|is_natural',
         ],
+        'harga_dp' => [
+            'rules' => 'required|is_natural',
+        ],
         'stok' => [
             'rules' => 'required|is_natural',
         ],
@@ -108,11 +136,45 @@ class Validation
         'lama_tour' => [
             'rules' => 'required|is_natural',
         ],
+        'hotel' => [
+            'rules' => 'required',
+        ],
         'deskripsi' => [
             'rules' => 'required',
         ],
         'id_kategori' => [
             'rules' => 'required',
+        ]
+
+    ];
+
+    public $promoupdate = [
+        'nama' => [
+            'rules' => 'required',
+        ],
+        'harga' => [
+            'rules' => 'required|is_natural',
+        ],
+        'harga_dp' => [
+            'rules' => 'required|is_natural',
+        ],
+        'stok' => [
+            'rules' => 'required|is_natural',
+        ],
+        'lama_tour' => [
+            'rules' => 'required|is_natural',
+        ],
+        'hotel' => [
+            'rules' => 'required',
+        ],
+        'deskripsi' => [
+            'rules' => 'required',
+        ],
+        'id_kategori' => [
+            'rules' => 'required',
+        ],
+        'harga_diskon' => [
+            'rules' => 'required|is_natural',
         ]
 
     ];
@@ -126,21 +188,134 @@ class Validation
             'required' => '{field} Harus diisi',
             'is_natural' => '{field} Tidak Boleh Negatif',
         ],
-        'stok' => [
+        'harga_dp' => [
             'required' => '{field} Harus diisi',
             'is_natural' => '{field} Tidak Boleh Negatif',
         ],
-        'gambar' => [
-            'uploaded' => '{field} Harus di upload',
+        'stok' => [
+            'required' => '{field} Harus diisi',
+            'is_natural' => '{field} Tidak Boleh Negatif',
         ],
         'lama_tour' => [
             'required' => '{field} Harus diisi',
             'is_natural' => '{field} Tidak Boleh Negatif',
         ],
+        'hotel' => [
+            'required' => '{field} Harus diisi',
+        ],
         'deskripsi' => [
             'required' => '{field} Harus diisi',
         ],
         'id_kategori' => [
+            'required' => '{field} Harus diisi',
+        ],
+        'harga_diskon' => [
+            'required' => '{field} Harus diisi',
+            'is_natural' => '{field} Tidak Boleh Negatif',
+        ],
+
+    ];
+
+    // public $transaksi_errors = [
+    //     'id_banner' => [
+    //         'required' => 'required',
+    //     ],
+    //     'id_pembeli' => [
+    //         'r' => 'required',
+    //     ],
+    //     'jumlah' => [
+    //         'rules' => 'required',
+    //     ],
+    //     'total_harga' => [
+    //         'rules' => 'required',
+    //     ],
+    //     'alamat' => [
+    //         'rules' => 'required',
+    //     ]
+    // ];
+
+    public $galeri = [
+        'nama' => [
+            'rules' => 'required',
+        ],
+        'gambar' => [
+            'rules' => 'uploaded[gambar]',
+        ]
+
+    ];
+
+    public $galeri_errors = [
+        'nama' => [
+            'required' => '{field} Harus diisi',
+        ],
+        'gambar' => [
+            'uploaded' => '{field} Harus di upload',
+        ]
+
+    ];
+
+    public $bannerupdate = [
+        'nama' => [
+            'rules' => 'required',
+        ],
+        'harga' => [
+            'rules' => 'required|is_natural',
+        ],
+        'stok' => [
+            'rules' => 'required|is_natural',
+        ],
+        'lama_tour' => [
+            'rules' => 'required|is_natural',
+        ],
+        'hotel' => [
+            'rules' => 'required',
+        ],
+        'deskripsi' => [
+            'rules' => 'required',
+        ],
+        'id_kategori' => [
+            'rules' => 'required',
+        ]
+
+    ];
+
+    public $bannerupdate_errors = [
+        'nama' => [
+            'required' => '{field} Harus diisi',
+        ],
+        'harga' => [
+            'required' => '{field} Harus diisi',
+            'is_natural' => '{field} Tidak Boleh Negatif',
+        ],
+        'stok' => [
+            'required' => '{field} Harus diisi',
+            'is_natural' => '{field} Tidak Boleh Negatif',
+        ],
+        'lama_tour' => [
+            'required' => '{field} Harus diisi',
+            'is_natural' => '{field} Tidak Boleh Negatif',
+        ],
+        'hotel' => [
+            'required' => '{field} Harus diisi',
+        ],
+        'deskripsi' => [
+            'required' => '{field} Harus diisi',
+        ],
+        'id_kategori' => [
+            'required' => '{field} Harus diisi',
+        ]
+
+    ];
+
+    public $galeriupdate = [
+        'nama' => [
+            'rules' => 'required',
+        ]
+
+    ];
+
+    public $galeriupdate_errors = [
+        'nama' => [
             'required' => '{field} Harus diisi',
         ]
 
