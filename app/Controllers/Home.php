@@ -84,6 +84,26 @@ class Home extends BaseController
         ]);
     }
 
+    public function history()
+    {
+        $transaksiModel = new \App\Models\transaksiModel();
+        $transaksi = $transaksiModel->findAll();
+
+        $modelUser = new \App\Models\UserModel();
+        $kategori = $modelUser->findAll();
+
+        $arrayKategori = null;
+
+        foreach ($kategori as $k) {
+            $arrayKategori[$k->id_user] = $k->username;
+        }
+
+        return view('transaksi/history', [
+            'transaksi' => $transaksi,
+            'arrayKategori' => $arrayKategori,
+        ]);
+    }
+
     public function cek()
     {
         $cart = \Config\Services::cart();

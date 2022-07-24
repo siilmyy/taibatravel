@@ -1,0 +1,14 @@
+<?= $this->extend('layout') ?>
+<?= $this->section('content') ?>
+<section class="banner_part">
+    <div class="container-fluid single_padding_top padding_bottom">
+        <div class="row justify-content-center padding_top">
+            <h3 class="text-light font-weight-bold">Butuh space spesial hanya untuk keluarga kecilmu saja?</h3>
+            <h4 class="text-light">hubungi customer service kami dan dapatkan penawaran spesial!</h4>
+        </div>
+        <div class="row justify-content-center">
+            <h5 class="text-light font-weight-bold ">whatsapp: 0856-2451-9776 atau <a href="https://api.whatsapp.com/send?phone=6285624519776" class="text-warning">klik disini</a></h5>
+        </div>
+    </div>
+</section>
+<?= $this->endSection() ?>
