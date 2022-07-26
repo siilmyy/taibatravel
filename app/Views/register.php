@@ -1,4 +1,4 @@
-<?= $this->extend('auth/templates/index'); ?>
+<?= $this->extend('layout2'); ?>
 <!--::header part start::-->
 <?= $this->section('content'); ?>
 <!-- sign in end-->
@@ -10,55 +10,114 @@
                     <div class="d-flex justify-content-center h-100">
                         <div class="card">
                             <div class="card-header">
-                                <h3><?= lang('Auth.register') ?></h3>
+                                <h3>Sign up</h3>
                                 <div class="d-flex justify-content-end social_icon">
-
                                     <span><i class="fab fa-google-plus-square"></i></span>
-
                                 </div>
                             </div>
 
+                            <!-- define per form -->
+                            <?php
+                            $username = [
+                                'name' => 'username',
+                                'id' => 'username',
+                                'value' => null,
+                                'class' => 'form-control',
+                                'placeholder' => 'username'
+                            ];
+
+                            $email = [
+                                'name' => 'email',
+                                'id' => 'email',
+                                'value' => null,
+                                'class' => 'form-control',
+                                'placeholder' => 'email'
+                            ];
+
+                            $password = [
+                                'name' => 'password',
+                                'id' => 'password',
+                                'class' => 'form-control',
+                                'placeholder' => 'password'
+                            ];
+
+                            $repeatPassword = [
+                                'name' => 'repeatPassword',
+                                'id' => 'repeatPassword',
+                                'class' => 'form-control',
+                                'placeholder' => 'repeat password'
+                            ];
+
+                            $session = session();
+                            $errors = $session->getFlashdata('errors');
+                            ?>
+
+                            <!-- jika ada error -->
+                            <?php if ($errors != null) : ?>
+                                <div class="alert alert-danger" role="alert">
+                                    <h4 class="alert-heading">Terjadi Kesalahan</h4>
+                                    <hr>
+                                    <p class="mb-0">
+                                        <?php
+                                        foreach ($errors as $err) {
+                                            echo $err . '<br>';
+                                        }
+                                        ?>
+                                    </p>
+                                </div>
+                            <?php endif ?>
+
+                            <!-- memulai form register by helper codeigniter -->
+
+                            <?= form_open('Auth/register') ?>
                             <div class="card-body">
-                                <?= view('Myth\Auth\Views\_message_block') ?>
-                                <form action="<?= route_to('register') ?>" method="post">
-                                    <?= csrf_field() ?>
-
-                                    <div class="input-group form-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                        </div>
-                                        <input type="email" class="form-control <?php if (session('errors.email')) : ?>is-invalid<?php endif ?>" name="email" aria-describedby="emailHelp" placeholder="<?= lang('Auth.email') ?>" value="<?= old('email') ?>">
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
                                     </div>
-
-                                    <div class="input-group form-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control <?php if (session('errors.username')) : ?>is-invalid<?php endif ?>" placeholder="<?= lang('Auth.username') ?>" value="<?= old('username') ?>" name="username">
+                                    <div class="d-none">
+                                        <?= form_label("Username", "username") ?>
                                     </div>
-
-                                    <div class="input-group form-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-key"></i></span>
-                                        </div>
-                                        <input type="password" name="password" class="form-control<?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" placeholder="<?= lang('Auth.password') ?>" autocomplete="off">
+                                    <?= form_input($username) ?>
+                                </div>
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
                                     </div>
-
-                                    <div class="input-group form-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-key"></i></span>
-                                        </div>
-                                        <input type="password" name="pass_confirm" class="form-control <?php if (session('errors.pass_confirm')) : ?>is-invalid<?php endif ?>" placeholder="<?= lang('Auth.repeatPassword') ?>" autocomplete="off">
+                                    <div class="d-none">
+                                        <?= form_label("Email", "email") ?>
                                     </div>
-                                    <!-- <div class="form-group">
-                                        <input type="submit" value="Sign Up" class="btn float-right login_btn">
-                                    </div> -->
-                                    <button type="submit" class="form-group btn btn-warning btn-block mt-3"><?= lang('Auth.register') ?></button>
-                                </form>
+                                    <?= form_input($email) ?>
+                                </div>
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    <div class="d-none">
+                                        <?= form_label("Password", "password") ?>
+                                    </div>
+                                    <?= form_password($password) ?>
+                                </div>
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    <div class="d-none">
+                                        <?= form_label("Repeat Password", "repeatPassword") ?>
+                                    </div>
+                                    <?= form_password($repeatPassword) ?>
+                                </div>
+                                <div class="text-right form-group ">
+                                    <?= form_submit('submit', 'Submit', ['class' => 'btn btn-warning btn-block mt-3']) ?>
+                                </div>
+                                <?= form_close('') ?>
                             </div>
                             <div class="card-footer">
                                 <div class="d-flex justify-content-center links">
-                                    <p class='text-light'><?= lang('Auth.alreadyRegistered') ?> <a href="<?= route_to('login') ?>"><?= lang('Auth.signIn') ?></a></p>
+                                    <p class='text-light'>Already Registered? <a href="<?= site_url('auth/login') ?>">Sign in</a></p>
+                                </div>
+                                <div class="d-flex justify-content-center links mb-3">
+                                    Back to<a href="<?= site_url('home/index')  ?>">Home</a>
                                 </div>
                             </div>
                         </div>

@@ -33,6 +33,16 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('auth/login', 'Auth::login');
+$routes->get('banner/update/(:num)', 'Banner::update/$1');
+$routes->get('banner/restore/(:any)', 'Banner::restore/$1');
+$routes->get('banner/delete/(:any)', 'Banner::delete/$1');
+// $routes->get('banner/restore/(:any)', 'Banner::restore/$1');
+$routes->get('banner/delete2', 'Banner::delete2');
+$routes->get('/daftar/(:any)', 'Home::daftar/$1');
+$routes->get('/daftar_diskon/(:any)', 'Home::daftar_diskon/$1');
+$routes->get('/payment/finishMidtrans', 'Payment::finishMidtrans');
+$routes->get('/payment/index', 'Payment::index');
+// $routes->get('banner/index', 'Banner::index');
 
 /*
  * --------------------------------------------------------------------
