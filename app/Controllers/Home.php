@@ -86,21 +86,11 @@ class Home extends BaseController
 
     public function history()
     {
-        $transaksiModel = new \App\Models\transaksiModel();
+        $transaksiModel = new TransaksiModel();
         $transaksi = $transaksiModel->findAll();
-
-        $modelUser = new \App\Models\UserModel();
-        $kategori = $modelUser->findAll();
-
-        $arrayKategori = null;
-
-        foreach ($kategori as $k) {
-            $arrayKategori[$k->id_user] = $k->username;
-        }
 
         return view('transaksi/history', [
             'transaksi' => $transaksi,
-            'arrayKategori' => $arrayKategori,
         ]);
     }
 

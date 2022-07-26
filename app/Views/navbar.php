@@ -53,6 +53,16 @@ $session = session();
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?= site_url('home/index#about_us') ?>">About Us</a>
                                 </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Profile
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="<?= site_url('user/index') ?>">View Profile</a>
+                                        <!-- <a class="dropdown-item" href="<?= site_url('user/update') ?>">Edit Profile</a> -->
+                                        <a class="dropdown-item" href="<?= site_url('user/history') ?>">Payment History</a>
+                                    </div>
+                                </li>
                             <?php endif ?>
                             <li>
                                 <?php if ($session->get('isLoggedIn')) : ?>

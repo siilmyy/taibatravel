@@ -148,6 +148,24 @@ class Validation
 
     ];
 
+    public $registerupdate = [
+        'username' => [
+            'rules' => 'required|min_length[5]',
+        ],
+        'email' => [
+            'rules' => 'required|valid_email',
+        ],
+        'nama' => [
+            'rules' => 'required',
+        ],
+        // 'password' => [
+        //     'rules' => 'required',
+        // ],
+        // 'repeatPassword' => [
+        //     'rules' => 'required|matches[password]',
+        // ],
+    ];
+
     public $promoupdate = [
         'nama' => [
             'rules' => 'required',
@@ -177,6 +195,30 @@ class Validation
             'rules' => 'required|is_natural',
         ]
 
+    ];
+
+    public $transaksiupdate = [
+        'id_banner' => [
+            'rules' => 'required',
+        ],
+        'id_pembeli' => [
+            'rules' => 'required',
+        ],
+        'jumlah' => [
+            'rules' => 'required',
+        ],
+        'total_harga' => [
+            'rules' => 'required',
+        ],
+        'total_dp' => [
+            'rules' => 'required',
+        ],
+        'handphone' => [
+            'rules' => 'required',
+        ],
+        'alamat' => [
+            'rules' => 'required',
+        ]
     ];
 
     public $banner_errors = [

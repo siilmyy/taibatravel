@@ -14,7 +14,7 @@ class Transaksi extends BaseController
         $this->session = \Config\Services::session();
         $this->session->start();
         $this->email = \Config\Services::email();
-
+        // $this->transaksimidtrans = new \App\Models\TransaksiMidtransModel();
         $this->transaksi = new \App\Models\TransaksiModel();
         $this->transaksipromo = new \App\Models\TransaksiPromoModel();
         $this->banner = new \App\Models\BannerModel();
@@ -45,13 +45,62 @@ class Transaksi extends BaseController
                 'id_user' => $this->request->getPost('id_user'),
                 'id_banner' => $this->request->getPost('id_banner'),
                 'jumlah' => $this->request->getPost('jumlah'),
+                'nama_pembeli' => $this->request->getPost('nama_pembeli'),
+                'nama' => $this->request->getPost('nama'),
+                'email' => $this->request->getPost('email'),
                 'total_harga' => $this->request->getPost('total_harga'),
                 'total_dp' => $this->request->getPost('total_dp'),
                 'handphone' => $this->request->getPost('handphone'),
                 'alamat' => $this->request->getPost('alamat'),
                 'created_at' => $time->format("Y-m-d H:i:s"),
                 'updated_at' => $time->format("Y-m-d H:i:s"),
+            ]);
+            if ($res == false) {
+                $data = [
+                    "value" => false,
+                    "message" => 'data tidak lengkap'
+                ];
+            } else {
+                $data = [
+                    "value" => true
+                ];
+                // $bannerModel = new banner();
+                // $banner = $bannerModel->find($id_banner);
+                // $entityBanner = new \App\Entities\Banner();
+                // $entityBanner->id_banner = $id_banner;
 
+                // $entityBanner->stok = $banner->stok - $jumlah;
+                // $bannerModel->save($entityBanner);
+            }
+            return json_encode($data);
+        } catch (\Exception $e) {
+            $data = [
+                "value" => false,
+                "message" => $e->getMessage()
+            ];
+            // return json_encode($data);
+        }
+    }
+
+
+
+    public function save_diskon()
+    {
+        try {
+            $time = new DateTime("now", new DateTimeZone('Asia/Jakarta'));
+            $res = $this->transaksi->save([
+                'id_user' => $this->request->getPost('id_user'),
+                'id_banner' => $this->request->getPost('id_banner'),
+                'jumlah' => $this->request->getPost('jumlah'),
+                'nama_pembeli' => $this->request->getPost('nama_pembeli'),
+                'nama' => $this->request->getPost('nama'),
+                'email' => $this->request->getPost('email'),
+                'total_harga' => $this->request->getPost('total_harga'),
+                'total_dp' => $this->request->getPost('total_dp'),
+                'handphone' => $this->request->getPost('handphone'),
+                'alamat' => $this->request->getPost('alamat'),
+                'created_at' => $time->format("Y-m-d H:i:s"),
+                'updated_at' => $time->format("Y-m-d H:i:s"),
             ]);
             if ($res == false) {
                 $data = [
@@ -71,108 +120,10 @@ class Transaksi extends BaseController
             ];
             // return json_encode($data);
         }
-    }
-
-    // public function tampilDataTemp()
-    // {
-    //     if ($this->request->isAJAX()) {
-    //         $id_banner = $this->request->getPost('id_banner');
-
-    //         $modeltransaksi = new transaksi();
-    //         $dataTemp = $modeltransaksi->tampilDataTemp($id_banner);
-    //         $data = [
-    //             'tampildata' => view('etalase/datatemp', $dataTemp)
-    //         ];
-    //     }
-    // }
-
-
-
-    public function payMidtrans()
-    {
-        try {
-            // $res = $this->transaksi->save([
-            //     'id_user' => $this->request->getPost('id_user'),
-            //     'id_banner' => $this->request->getPost('id_banner'),
-            //     'jumlah' => $this->request->getPost('jumlah'),
-            //     'total_harga' => $this->request->getPost('total_harga'),
-            //     'total_dp' => $this->request->getPost('total_dp'),
-            //     'handphone' => $this->request->getPost('handphone'),
-            //     'alamat' => $this->request->getPost('alamat'),
-            //     // 'created_date' => $this->request->date("Y-m-d H:i:s"),
-            // ]);
-            // if ($res == false) {
-            //     $data = [
-            //         "value" => false,
-            //         "message" => 'data tidak lengkap'
-            //     ];
-            // } else {
-            //     $data = [
-            //         "value" => true
-            //     ];
-            // }
-
-            $params = array(
-                'transaction_details' => array(
-                    'order_id' => rand(),
-                    'gross_amount' => 10000,
-                ),
-                'customer_details' => array(
-                    'first_name' => 'budi',
-                    'last_name' => 'pratama',
-                    'email' => 'budi.pra@example.com',
-                    'phone' => '08111222333',
-                ),
-            );
-
-            $data = [
-                'snapToken' => \Midtrans\Snap::getSnapToken($params),
-                'status' => 'Success'
-            ];
-            return json_encode($data);
-        } catch (\Exception $e) {
-            $data = [
-                "value" => false,
-                "message" => $e->getMessage()
-            ];
-            return json_encode($data);
-        }
-    }
-
-    public function save_diskon()
-    {
-        try {
-            $res = $this->transaksi->save([
-                'id_user' => $this->request->getPost('id_user'),
-                'id_promo' => $this->request->getPost('id_promo'),
-                'jumlah' => $this->request->getPost('jumlah'),
-                'total_harga' => $this->request->getPost('total_harga'),
-                'total_dp' => $this->request->getPost('total_dp'),
-                'handphone' => $this->request->getPost('handphone'),
-                'alamat' => $this->request->getPost('alamat'),
-                // 'created_date' => $this->request->date("Y-m-d H:i:s"),
-            ]);
-            if ($res == false) {
-                $data = [
-                    "value" => false,
-                    "message" => 'data tidak lengkap'
-                ];
-            } else {
-                $data = [
-                    "value" => true
-                ];
-            }
-            return json_encode($data);
-        } catch (\Exception $e) {
-            $data = [
-                "value" => false,
-                "message" => $e->getMessage()
-            ];
-            return json_encode($data);
-        }
 
         //return redirect()->to('/daftar_posluhdes?kode_kec=' . $this->request->getPost('kode_kec'));
     }
+
 
     public function update()
     {
@@ -187,7 +138,7 @@ class Transaksi extends BaseController
 
             if (!$errors) {
                 $b = new \App\Entities\transaksi();
-                $b->id = $id;
+                $b->id_transaksi = $id;
                 $b->fill($data);
 
                 $modeltransaksi->save($b);
@@ -202,5 +153,51 @@ class Transaksi extends BaseController
         return view('transaksi/update', [
             'transaksi' => $transaksi,
         ]);
+    }
+
+    public function finishMidtrans()
+    {
+        try {
+            $time = new DateTime("now", new DateTimeZone('Asia/Jakarta'));
+            $res = $this->transaksi->save([
+                'id_user' => $this->request->getPost('id_user'),
+                'id_banner' => $this->request->getPost('id_banner'),
+                'jumlah' => $this->request->getPost('jumlah'),
+                'email' => $this->request->getPost('email'),
+                'nama_pembeli' => $this->request->getPost('nama_pembeli'),
+                'nama' => $this->request->getPost('nama'),
+                'total_harga' => $this->request->getPost('total_harga'),
+                'total_dp' => $this->request->getPost('total_dp'),
+                'handphone' => $this->request->getPost('handphone'),
+                'alamat' => $this->request->getPost('alamat'),
+                'created_at' => $time->format("Y-m-d H:i:s"),
+                'updated_at' => $time->format("Y-m-d H:i:s"),
+                'order_id' => $this->request->getPost('order_id'),
+                'payment_type' => $this->request->getPost('payment_type'),
+                'transaction_status' => $this->request->getPost('transaction_status'),
+                'treansaction_time' => $this->request->getPost('transaction_time'),
+                'va_number' => $this->request->getPost('va_number'),
+                'bank' => $this->request->getPost('bank'),
+
+            ]);
+            if ($res == false) {
+                $json = [
+                    "value" => false,
+                    "message" => 'data tidak lengkap'
+                ];
+            } else {
+                $json = [
+                    "value" => true,
+                    "sukses" => 'Transaksi Midtrans berhasil disimpan, silahkan lanjutkan Pembayaran'
+                ];
+            }
+            return json_encode($json);
+        } catch (\Exception $e) {
+            $json = [
+                "value" => false,
+                "message" => $e->getMessage()
+            ];
+            // return json_encode($data);
+        }
     }
 }

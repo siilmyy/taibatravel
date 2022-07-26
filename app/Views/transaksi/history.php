@@ -13,13 +13,17 @@
                         <table class="table table-responsive ">
                             <thead class="">
                                 <th>No</th>
-                                <th>Username</th>
+                                <th>Nama Pemesan</th>
                                 <th>Paket Travel</th>
                                 <th>Jumlah Tiket</th>
                                 <th>Total Harga</th>
+                                <th>Total DP</th>
                                 <th>Status</th>
                                 <th>Ordel ID</th>
-                                <th>Aksi</th>
+                                <th>VA Number</th>
+                                <th>Bank</th>
+                                <th>Email</th>
+                                <th>No Handphone</th>
                             </thead>
                             <tbody>
                                 <?php foreach ($transaksi as $index => $trans) : ?>
@@ -29,12 +33,13 @@
                                         <td><?= $trans->nama ?></td>
                                         <td><?= $trans->jumlah ?></td>
                                         <td><?= number_format($trans->total_harga, 2, ',', '.') ?></td>
-                                        <td><?= $trans->status ?></td>
-                                        <td><?= $trans->order_id ?> hari</td>
-                                        <td class="">
-                                            <a href="<?= site_url('transaksi/update/' . $trans->id_transaksi) ?>" class="d-flex btn btn-primary my-2 font_table">Edit</a>
-                                            <a href="<?= site_url('transaksi/delete/' . $trans->id_transaksi) ?>" class="d-flex btn btn-warning my-2 font_table">Delete</a>
-                                        </td>
+                                        <td><?= number_format($trans->total_dp, 2, ',', '.') ?></td>
+                                        <td><?= $trans->transaction_status ?></td>
+                                        <td><?= $trans->order_id ?></td>
+                                        <td><?= $trans->va_number ?></td>
+                                        <td><?= $trans->bank ?></td>
+                                        <td><?= $trans->email ?></td>
+                                        <td><?= $trans->handphone ?></td>
                                     </tr>
                                 <?php endforeach ?>
                             </tbody>

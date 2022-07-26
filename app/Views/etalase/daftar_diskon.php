@@ -27,85 +27,77 @@
                         <? csrf_field(); ?>
                         <div class="card-body">
                             <div class="form-group">
-
                                 <input type="hidden" class="form-control" id="id_user" name="id_user" placeholder="Enter Title" value="<?= $iduser; ?>" disabled>
                             </div>
                             <div class="form-group">
-
-                                <input type="hidden" class="form-control" id="id_promo" name="id_promo" placeholder="Enter id_promo" value="<?= $promo['id_promo']; ?>" disabled>
+                                <input type="hidden" class="form-control" id="id_banner" name="id_banner" placeholder="Enter id_promo" value="<?= $promo['id_promo']; ?>" disabled>
+                            </div>
+                            <div class=" form-group">
+                                <label for="nama_pembeli">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="nama_pembeli" name="nama_pembeli" placeholder="Nama Lengkap Pemesan" required="">
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" class="form-control" id="nama" name="nama" placeholder="nama" readonly="true" value="<?= $promo['nama']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Aktif</label>
+                                <input type="text" class="form-control" id="email" name="email" placeholder="isi email aktif">
                             </div>
                             <div class=" form-group">
                                 <label for="jumlah">Jumlah Pembelian</label>
-                                <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="Enter jumlah" onblur="someFunction()" value="1" min="1" max="<?= $promo['stok']; ?>">
+                                <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="Enter jumlah" value="1" min="1" max="<?= $promo['stok']; ?>">
                             </div>
                             <div class="form-group">
                                 <input type="hidden" class="form-control" id="harga_diskon" name="harga_diskon" placeholder="Enter harga" value="<?= $promo['harga_diskon']; ?>">
                             </div>
                             <div class="form-group">
                                 <label for="total_harga">Total Harga</label>
-                                <input type="text" class="form-control" id="total_harga" name="total_harga" readonly="true" placeholder="Enter Total Harga" onblur="someFunction()">
+                                <input type="text" class="form-control" id="total_harga" name="total_harga" readonly="true" placeholder="Enter Total Harga">
                             </div>
                             <div class="form-group">
                                 <input type="hidden" class="form-control" id="harga_dp" name="harga_dp" placeholder="Enter Harga DP" readonly="true" value="<?= $promo['harga_dp']; ?>">
                             </div>
                             <div class="form-group">
                                 <label for="total_dp">Total DP</label>
-                                <input type="text" class="form-control" readonly="true" id="total_dp" name="total_dp" placeholder="Enter Total DP" onblur="someFunction()">
+                                <input type="text" class="form-control" readonly="true" id="total_dp" name="total_dp" placeholder="Enter Total DP">
                             </div>
                             <div class="form-group">
                                 <label for="handphone">Nomor Handphone</label>
-                                <input type="text" class="form-control" id="handphone" name="handphone" placeholder="Enter handphone" onkeypress="return Angka(event)">
+                                <input type="number" class="form-control" id="handphone" name="handphone" placeholder="Isi No handphone">
                             </div>
                             <div class="form-group">
                                 <label for="alamat">alamat</label>
-                                <textarea class="form-control" id="alamat" name="alamat" placeholder="alamat" required></textarea>
+                                <textarea class="form-control" id="alamat" name="alamat" placeholder="isi alamat lengkap" required></textarea>
                             </div>
                         </div>
                         <!-- /.card-body -->
 
                         <div class="card-footer justify-content-end">
-                            <button type="button" id="btnSave" class="btn btn-primary">Add</button>
+                            <button type="button" id="btnSave" class="btn btn-success">Bayar Sekarang</button>
                         </div>
                     </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-danger">Notice!</h3>
+                        </div>
+                        <div class="card-body">
+                            <h5>1. Jika sudah selesai melakukan tahap pembayaran DP. Silahkan hubungi dan lampirkan bukti pembayaran pada customer services kami <a href="https://api.whatsapp.com/send?phone=6285624519776" class="text-info">disini</a> untuk kelanjutan pembayaran dan syarat-syarat keberangkatan sesuai paket yang dipilih</h5>
+                            <h5>2. Apabila memilih perjalan internasional tetapi belum memiliki passport, harap segera hubungi customer services kami setelah pembayaran berhasil. Silahkan hubungi customer services kami <a href="https://api.whatsapp.com/send?phone=6285624519776" class="text-info">disini</a></h5>
+                            <h5>2. Apabila memilih perjalanan Umroh dan belum memiliki Passport, berikut info yang harus disiapkan dan dilakukan, silahkan klik <a href="https://drive.google.com/file/d/1JIleRDbcasG3FQOvNA8gt0wBS0GAqwVr/view?usp=sharing" class="text-info">disini</a></h5>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 </section>
 <?= $this->endSection() ?>
 <?= $this->section('script') ?>
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-kP6BKT_pxz3F3JDn"></script>
 <script>
-    // $('document').ready(function() {
-    //     var jumlah_pembelian = 1;
-    //     var harga = <?= $promo['harga'] ?>;
-    //     var harga_dp = <?= $promo['harga_dp'] ?>
-
-    //     jumlah_pembelian = $("#jumlah").val();
-    //     var total_harga = (jumlah_pembelian * harga);
-    //     $("#total_harga").val(total_harga);
-
-    //     $("#jumlah").on("change", function() {
-    //         jumlah_pembelian = $("#jumlah").val();
-    //         var total_harga = (jumlah_pembelian * harga);
-    //         $("#total_harga").val(total_harga);
-    //     });
-
-    //     jumlah_pembelian = $("#jumlah").val();
-    //     var total_dp = (jumlah_pembelian * harga_dp);
-    //     $("#total_dp").val(total_dp);
-
-    //     $("#jumlah").on("change", function() {
-    //         jumlah_pembelian = $("#jumlah").val();
-    //         var total_dp = (jumlah_pembelian * harga_dp);
-    //         $("#total_dp").val(total_dp);
-    //     });
-    // });
-    function Angka(event) {
-        var angka = (event.which) ? event.which : event.keyCode
-        if (angka != 46 && angka > 31 && (angka < 48 || angka > 57))
-            return false;
-        return true;
-    }
-
     $('document').ready(function() {
         var p1 = $('#jumlah').val();
         var p2 = $('#harga_diskon').val();
@@ -121,12 +113,28 @@
         }
     });
 
+    $("#jumlah").on("change", function() {
+        var harga_dp = Number($('#harga_dp').val());
+        jumlah_pembelian = Number($("#jumlah").val());
+        var total_dp = (jumlah_pembelian * harga_dp);
+        $("#total_dp").val(total_dp);
+    });
+    $("#jumlah").on("change", function() {
+        var harga_diskon = Number($('#harga_diskon').val());
+        jumlah_pembelian = Number($("#jumlah").val());
+        var total_harga = (jumlah_pembelian * harga_diskon);
+        $("#total_harga").val(total_harga);
+    });
+
     $(document).ready(function() {
 
         $(document).delegate('#btnSave', 'click', function() {
 
             var id_user = $('#id_user').val();
-            var id_promo = $('#id_promo').val();
+            var id_banner = $('#id_banner').val();
+            var nama_pembeli = $('#nama_pembeli').val();
+            var nama = $('#nama').val();
+            var email = $('#email').val();
             var jumlah = $('#jumlah').val();
             var stok = $('#stok').val();
             var total_harga = $('#total_harga').val();
@@ -139,7 +147,10 @@
                 type: 'POST',
                 data: {
                     'id_user': id_user,
-                    'id_promo': id_promo,
+                    'id_banner': id_banner,
+                    'nama_pembeli': nama_pembeli,
+                    'nama': nama,
+                    'email': email,
                     'jumlah': jumlah,
                     'total_harga': total_harga,
                     'total_dp': total_dp,
@@ -148,15 +159,144 @@
                 },
                 success: function(result) {
                     result = JSON.parse(result);
+                    // console.log(result);
+                    // return;
                     if (result.value) {
-                        Swal.fire({
-                            title: 'Sukses',
-                            text: "Transaksi Berhasil",
-                            type: 'success',
-                        }).then((result) => {
+                        $.ajax({
+                            url: '<?= base_url() ?>/Payment',
+                            type: 'POST',
+                            data: {
+                                'id_user': id_user,
+                                'id_banner': id_banner,
+                                'nama_pembeli': nama_pembeli,
+                                'nama': nama,
+                                'email': email,
+                                'jumlah': jumlah,
+                                'total_harga': total_harga,
+                                'total_dp': total_dp,
+                                'handphone': handphone,
+                                'alamat': alamat,
+                            },
+                            dataType: "json",
+                            success: function(response) {
+                                console.log(response);
+                                // responses = JSON.parse(response);
+                                if (response.status == 'Success') {
+                                    console.log('success');
+                                    snap.pay(response.snapToken, {
+                                        // Optional
+                                        onSuccess: function(result) {
+                                            let dataResult = JSON.stringify(result, null, 2);
+                                            let dataObj = JSON.parse(dataResult);
 
-                            if (result.value) {
-                                location.reload();
+                                            $.ajax({
+                                                url: '<?= base_url() ?>/Transaksi/finishMidtrans/',
+                                                type: 'POST',
+                                                data: {
+                                                    id_user: response.id_user,
+                                                    id_banner: response.id_banner,
+                                                    nama_pembeli: response.nama_pembeli,
+                                                    nama: response.nama,
+                                                    email: response.email,
+                                                    jumlah: response.jumlah,
+                                                    total_harga: response.total_harga,
+                                                    total_dp: response.total_dp,
+                                                    handphone: response.handphone,
+                                                    alamat: response.alamat,
+                                                    order_id: dataObj.order_id,
+                                                    payment_type: dataObj.payment_type,
+                                                    transaction_time: dataObj.transaction_time,
+                                                    transaction_status: dataObj.transaction_status,
+                                                    va_number: dataObj.bill_key,
+                                                    bank: dataObj.biller_code,
+                                                },
+                                                dataType: "json",
+                                                success: function(response) {
+                                                    if (response.sukses) {
+                                                        alert(response.sukses);
+                                                        window.location.reload();
+
+                                                    }
+                                                }
+                                            });
+                                        },
+                                        // Optional
+                                        onPending: function(result) {
+                                            let dataResult = JSON.stringify(result, null, 2);
+                                            let dataObj = JSON.parse(dataResult);
+                                            console.log(dataObj);
+                                            $.ajax({
+                                                url: '<?= base_url() ?>/Transaksi/finishMidtrans/',
+                                                type: 'POST',
+                                                data: {
+                                                    id_user: response.id_user,
+                                                    id_banner: response.id_banner,
+                                                    nama_pembeli: response.nama_pembeli,
+                                                    nama: response.nama,
+                                                    email: response.email,
+                                                    jumlah: response.jumlah,
+                                                    total_harga: response.total_harga,
+                                                    total_dp: response.total_dp,
+                                                    handphone: response.handphone,
+                                                    alamat: response.alamat,
+                                                    order_id: dataObj.order_id,
+                                                    payment_type: dataObj.payment_type,
+                                                    transaction_time: dataObj.transaction_time,
+                                                    transaction_status: dataObj.transaction_status,
+                                                    va_number: dataObj.bill_key,
+                                                    bank: dataObj.biller_code,
+                                                },
+                                                dataType: "json",
+                                                success: function(response) {
+                                                    if (response.sukses) {
+                                                        alert(response.sukses);
+                                                        window.location.reload();
+
+                                                    }
+                                                }
+                                            });
+                                        },
+                                        // Optional
+                                        onError: function(result) {
+                                            let dataResult = JSON.stringify(result, null, 2);
+                                            let dataObj = JSON.parse(dataResult);
+
+                                            $.ajax({
+                                                url: '<?= base_url() ?>/Transaksi/finishMidtrans/',
+                                                type: 'POST',
+                                                data: {
+                                                    id_user: response.id_user,
+                                                    id_banner: response.id_banner,
+                                                    nama_pembeli: response.nama_pembeli,
+                                                    nama: response.nama,
+                                                    email: response.email,
+                                                    jumlah: response.jumlah,
+                                                    total_harga: response.total_harga,
+                                                    total_dp: response.total_dp,
+                                                    handphone: response.handphone,
+                                                    alamat: response.alamat,
+                                                    order_id: dataObj.order_id,
+                                                    payment_type: dataObj.payment_type,
+                                                    transaction_time: dataObj.transaction_time,
+                                                    transaction_status: dataObj.transaction_status,
+                                                    va_number: dataObj.bill_key,
+                                                    bank: dataObj.biller_code,
+                                                },
+                                                dataType: "json",
+                                                success: function(response) {
+                                                    if (response.sukses) {
+                                                        alert(response.sukses);
+                                                        window.location.reload();
+                                                    }
+                                                },
+                                                error: function(response) {
+                                                    console.log(response.responseText)
+                                                }
+                                            });
+                                        }
+                                    });
+                                }
+
                             }
                         });
                     } else {
