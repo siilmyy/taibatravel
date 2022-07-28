@@ -23,6 +23,22 @@ class User extends BaseController
         ]);
     }
 
+    public function profile()
+    {
+        // $model = new \App\Models\UserModel();
+        // $users = $model->find($id_user);
+
+        return view('user/view');
+    }
+
+    public function riwayat()
+    {
+        // $model = new \App\Models\UserModel();
+        // $users = $model->find($id_user);
+
+        return view('user/riwayat');
+    }
+
     public function update()
     {
         $id = $this->request->uri->getSegment(3);

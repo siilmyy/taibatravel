@@ -115,7 +115,7 @@
                     </div>
 
                     <div class="form-group" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Primary color'">
-                        <?= form_label("Stok", "stok") ?>
+                        <?= form_label("Kuota", "stok") ?>
                         <?= form_input($stok) ?>
                     </div>
 

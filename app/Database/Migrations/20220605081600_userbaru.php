@@ -28,10 +28,6 @@ class Userbaru extends \CodeIgniter\Database\Migration
 			'salt' => [
 				'type' => 'TEXT'
 			],
-			// 'avatar' => [
-			// 	'type' => 'TEXT',
-			// 	'null' => TRUE,
-			// ],
 			'role' => [
 				'type' => 'INT',
 				'constraint' => 1,

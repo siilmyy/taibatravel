@@ -86,8 +86,30 @@ class Home extends BaseController
 
     public function history()
     {
-        $transaksiModel = new TransaksiModel();
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = 'SB-Mid-server-XPVlhdgn-tQoGUS0jp849vuB';
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+
+        $transaksiModel = new \App\Models\TransaksiMidtransModel();
         $transaksi = $transaksiModel->findAll();
+
+        // //update status transaksi
+        // $status = \Midtrans\Transaction::status($transaksi['order_id']);
+        // $transaksiModel->update([
+        //     'transaction_status' => $status->transaction_status,
+        // ]);
+
+        // $data = [
+        //     'order_id' => $transaksi['order_id'],
+        //     '' => $transaksi['order_id'],
+        // ]
+
 
         return view('transaksi/history', [
             'transaksi' => $transaksi,

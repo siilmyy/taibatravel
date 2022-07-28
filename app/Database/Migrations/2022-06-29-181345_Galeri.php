@@ -20,6 +20,9 @@ class Galeri extends Migration
             ],
             'gambar' => [
                 'type' => 'TEXT',
+            ],
+            'deleted_at' => [
+                'type' => 'DATETIME',
             ]
         ]);
 

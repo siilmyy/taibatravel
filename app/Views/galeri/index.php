@@ -5,10 +5,10 @@
         <div class="row">
             <div class="card mx-auto">
                 <div class="card-header">
-                    <h4>List Tour</h4>
+                    <h4>List Galeri</h4>
                 </div>
                 <div class="card-body">
-                    <table class="table table-responsive">
+                    <table class="table table-responsive" id="example">
                         <thead>
                             <th>No</th>
                             <th>Nama</th>
@@ -37,4 +37,11 @@
         </div>
     </div>
 </section>
+<?= $this->endSection() ?>
+<?= $this->section('script') ?>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+</script>
 <?= $this->endSection() ?>

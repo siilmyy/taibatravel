@@ -21,6 +21,10 @@ class Banner extends \CodeIgniter\Database\Migration
                 'type' => 'INT',
                 'constraint' => 11,
             ],
+            'harga_dp' => [
+                'type' => 'INT',
+                'constraint' => 11,
+            ],
             'stok' => [
                 'type' => 'INT',
                 'constraint' => 11,
@@ -32,11 +36,11 @@ class Banner extends \CodeIgniter\Database\Migration
                 'type' => 'INT',
                 'constraint' => 11,
             ],
-            'deskripsi' => [
+            'hotel' => [
                 'type' => 'TEXT',
             ],
-            'jenis_tour' => [
-                'type' => 'ENUM',
+            'deskripsi' => [
+                'type' => 'TEXT',
             ],
             'created_by' => [
                 'type' => 'INT',
@@ -53,6 +57,13 @@ class Banner extends \CodeIgniter\Database\Migration
             'updated_date' => [
                 'type' => 'DATETIME',
                 'null' => TRUE,
+            ],
+            'id_kategori' => [
+                'type' => 'INT',
+                'constraint' => 11,
+            ],
+            'deleted_at' => [
+                'type' => 'DATETIME',
             ]
         ]);
 

@@ -2,13 +2,13 @@
 
 namespace App\Database\Migrations;
 
-class BannerDomestic extends \CodeIgniter\Database\Migration
+class Promo extends \CodeIgniter\Database\Migration
 {
 
     public function up()
     {
         $this->forge->addField([
-            'id' => [
+            'id_promo' => [
                 'type' => 'INT',
                 'constraint' => 11,
                 'unsigned' => TRUE,
@@ -18,6 +18,14 @@ class BannerDomestic extends \CodeIgniter\Database\Migration
                 'type' => 'TEXT',
             ],
             'harga' => [
+                'type' => 'INT',
+                'constraint' => 11,
+            ],
+            'harga_dp' => [
+                'type' => 'INT',
+                'constraint' => 11,
+            ],
+            'harga_diskon' => [
                 'type' => 'INT',
                 'constraint' => 11,
             ],
@@ -31,6 +39,9 @@ class BannerDomestic extends \CodeIgniter\Database\Migration
             'lama_tour' => [
                 'type' => 'INT',
                 'constraint' => 11,
+            ],
+            'hotel' => [
+                'type' => 'TEXT',
             ],
             'deskripsi' => [
                 'type' => 'TEXT',
@@ -50,15 +61,22 @@ class BannerDomestic extends \CodeIgniter\Database\Migration
             'updated_date' => [
                 'type' => 'DATETIME',
                 'null' => TRUE,
+            ],
+            'id_kategori' => [
+                'type' => 'INT',
+                'constraint' => 11,
+            ],
+            'deleted_at' => [
+                'type' => 'DATETIME',
             ]
         ]);
 
-        $this->forge->addKey('id', TRUE);
-        $this->forge->createTable('bannerdomestic');
+        $this->forge->addKey('id_promo', TRUE);
+        $this->forge->createTable('promo');
     }
 
     public function down()
     {
-        $this->forge->dropTable('bannerdomestic');
+        $this->forge->dropTable('promo');
     }
 }

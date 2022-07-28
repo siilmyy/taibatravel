@@ -142,185 +142,144 @@
             var handphone = $('#handphone').val();
             var alamat = $('#alamat').val();
 
-            $.ajax({
-                url: '<?= base_url() ?>/Transaksi/save_diskon/',
-                type: 'POST',
-                data: {
-                    'id_user': id_user,
-                    'id_banner': id_banner,
-                    'nama_pembeli': nama_pembeli,
-                    'nama': nama,
-                    'email': email,
-                    'jumlah': jumlah,
-                    'total_harga': total_harga,
-                    'total_dp': total_dp,
-                    'handphone': handphone,
-                    'alamat': alamat,
-                },
-                success: function(result) {
-                    result = JSON.parse(result);
-                    // console.log(result);
-                    // return;
-                    if (result.value) {
-                        $.ajax({
-                            url: '<?= base_url() ?>/Payment',
-                            type: 'POST',
-                            data: {
-                                'id_user': id_user,
-                                'id_banner': id_banner,
-                                'nama_pembeli': nama_pembeli,
-                                'nama': nama,
-                                'email': email,
-                                'jumlah': jumlah,
-                                'total_harga': total_harga,
-                                'total_dp': total_dp,
-                                'handphone': handphone,
-                                'alamat': alamat,
-                            },
-                            dataType: "json",
-                            success: function(response) {
-                                console.log(response);
-                                // responses = JSON.parse(response);
-                                if (response.status == 'Success') {
-                                    console.log('success');
-                                    snap.pay(response.snapToken, {
-                                        // Optional
-                                        onSuccess: function(result) {
-                                            let dataResult = JSON.stringify(result, null, 2);
-                                            let dataObj = JSON.parse(dataResult);
+            if (nama_pembeli != "" && email != "" && handphone != "" && alamat != "") {
+                $.ajax({
+                    url: '<?= base_url() ?>/Payment',
+                    type: 'POST',
+                    data: {
+                        'id_user': id_user,
+                        'id_banner': id_banner,
+                        'nama_pembeli': nama_pembeli,
+                        'nama': nama,
+                        'email': email,
+                        'jumlah': jumlah,
+                        'total_harga': total_harga,
+                        'total_dp': total_dp,
+                        'handphone': handphone,
+                        'alamat': alamat,
+                    },
+                    dataType: "json",
+                    success: function(response) {
+                        // response = JSON.parse(response);
+                        console.log(response);
+                        if (response.status == 'Success') {
+                            console.log('success');
+                            snap.pay(response.snapToken, {
+                                // Optional
+                                onSuccess: function(result) {
+                                    let dataResult = JSON.stringify(result, null, 2);
+                                    let dataObj = JSON.parse(dataResult);
 
-                                            $.ajax({
-                                                url: '<?= base_url() ?>/Transaksi/finishMidtrans/',
-                                                type: 'POST',
-                                                data: {
-                                                    id_user: response.id_user,
-                                                    id_banner: response.id_banner,
-                                                    nama_pembeli: response.nama_pembeli,
-                                                    nama: response.nama,
-                                                    email: response.email,
-                                                    jumlah: response.jumlah,
-                                                    total_harga: response.total_harga,
-                                                    total_dp: response.total_dp,
-                                                    handphone: response.handphone,
-                                                    alamat: response.alamat,
-                                                    order_id: dataObj.order_id,
-                                                    payment_type: dataObj.payment_type,
-                                                    transaction_time: dataObj.transaction_time,
-                                                    transaction_status: dataObj.transaction_status,
-                                                    va_number: dataObj.bill_key,
-                                                    bank: dataObj.biller_code,
-                                                },
-                                                dataType: "json",
-                                                success: function(response) {
-                                                    if (response.sukses) {
-                                                        alert(response.sukses);
-                                                        window.location.reload();
-
-                                                    }
-                                                }
-                                            });
+                                    $.ajax({
+                                        url: '<?= base_url() ?>/Transaksi/finishMidtrans/',
+                                        type: 'POST',
+                                        data: {
+                                            id_user: response.id_user,
+                                            nama_pembeli: response.nama_pembeli,
+                                            nama: response.nama,
+                                            gross_amount: dataObj.gross_amount,
+                                            total_harga: response.total_harga,
+                                            jumlah: response.jumlah,
+                                            handphone: response.handphone,
+                                            order_id: dataObj.order_id,
+                                            payment_type: dataObj.payment_type,
+                                            transaction_time: dataObj.transaction_time,
+                                            transaction_status: dataObj.transaction_status,
+                                            pdf_url: dataObj.pdf_url,
                                         },
-                                        // Optional
-                                        onPending: function(result) {
-                                            let dataResult = JSON.stringify(result, null, 2);
-                                            let dataObj = JSON.parse(dataResult);
-                                            console.log(dataObj);
-                                            $.ajax({
-                                                url: '<?= base_url() ?>/Transaksi/finishMidtrans/',
-                                                type: 'POST',
-                                                data: {
-                                                    id_user: response.id_user,
-                                                    id_banner: response.id_banner,
-                                                    nama_pembeli: response.nama_pembeli,
-                                                    nama: response.nama,
-                                                    email: response.email,
-                                                    jumlah: response.jumlah,
-                                                    total_harga: response.total_harga,
-                                                    total_dp: response.total_dp,
-                                                    handphone: response.handphone,
-                                                    alamat: response.alamat,
-                                                    order_id: dataObj.order_id,
-                                                    payment_type: dataObj.payment_type,
-                                                    transaction_time: dataObj.transaction_time,
-                                                    transaction_status: dataObj.transaction_status,
-                                                    va_number: dataObj.bill_key,
-                                                    bank: dataObj.biller_code,
-                                                },
-                                                dataType: "json",
-                                                success: function(response) {
-                                                    if (response.sukses) {
-                                                        alert(response.sukses);
-                                                        window.location.reload();
-
-                                                    }
-                                                }
-                                            });
+                                        dataType: "json",
+                                        success: function(response) {
+                                            if (response.sukses) {
+                                                alert(response.sukses);
+                                                window.location.reload();
+                                            }
                                         },
-                                        // Optional
-                                        onError: function(result) {
-                                            let dataResult = JSON.stringify(result, null, 2);
-                                            let dataObj = JSON.parse(dataResult);
+                                        error: function(response) {
+                                            console.log(response.responseText)
+                                        }
+                                    });
+                                },
+                                // Optional
+                                onPending: function(result) {
+                                    let dataResult = JSON.stringify(result, null, 2);
+                                    let dataObj = JSON.parse(dataResult);
+                                    console.log(dataObj);
+                                    console.log(response);
 
-                                            $.ajax({
-                                                url: '<?= base_url() ?>/Transaksi/finishMidtrans/',
-                                                type: 'POST',
-                                                data: {
-                                                    id_user: response.id_user,
-                                                    id_banner: response.id_banner,
-                                                    nama_pembeli: response.nama_pembeli,
-                                                    nama: response.nama,
-                                                    email: response.email,
-                                                    jumlah: response.jumlah,
-                                                    total_harga: response.total_harga,
-                                                    total_dp: response.total_dp,
-                                                    handphone: response.handphone,
-                                                    alamat: response.alamat,
-                                                    order_id: dataObj.order_id,
-                                                    payment_type: dataObj.payment_type,
-                                                    transaction_time: dataObj.transaction_time,
-                                                    transaction_status: dataObj.transaction_status,
-                                                    va_number: dataObj.bill_key,
-                                                    bank: dataObj.biller_code,
-                                                },
-                                                dataType: "json",
-                                                success: function(response) {
-                                                    if (response.sukses) {
-                                                        alert(response.sukses);
-                                                        window.location.reload();
-                                                    }
-                                                },
-                                                error: function(response) {
-                                                    console.log(response.responseText)
-                                                }
-                                            });
+                                    $.ajax({
+                                        url: '<?= base_url() ?>/Transaksi/finishMidtrans/',
+                                        type: 'POST',
+                                        data: {
+                                            id_user: response.id_user,
+                                            nama_pembeli: response.nama_pembeli,
+                                            nama: response.nama,
+                                            gross_amount: dataObj.gross_amount,
+                                            total_harga: response.total_harga,
+                                            jumlah: response.jumlah,
+                                            handphone: response.handphone,
+                                            order_id: dataObj.order_id,
+                                            payment_type: dataObj.payment_type,
+                                            transaction_time: dataObj.transaction_time,
+                                            transaction_status: dataObj.transaction_status,
+                                            pdf_url: dataObj.pdf_url,
+                                        },
+                                        dataType: "json",
+                                        success: function(response) {
+                                            if (response.sukses) {
+                                                alert(response.sukses);
+                                                window.location.reload();
+                                            }
+                                        }
+                                    });
+
+                                },
+                                // Optional
+                                onError: function(result) {
+                                    let dataResult = JSON.stringify(result, null, 2);
+                                    let dataObj = JSON.parse(dataResult);
+
+                                    $.ajax({
+                                        url: '<?= base_url() ?>/Transaksi/finishMidtrans/',
+                                        type: 'POST',
+                                        data: {
+                                            id_user: response.id_user,
+                                            nama_pembeli: response.nama_pembeli,
+                                            nama: response.nama,
+                                            gross_amount: dataObj.gross_amount,
+                                            total_harga: response.total_harga,
+                                            jumlah: response.jumlah,
+                                            handphone: response.handphone,
+                                            order_id: dataObj.order_id,
+                                            payment_type: dataObj.payment_type,
+                                            transaction_time: dataObj.transaction_time,
+                                            transaction_status: dataObj.transaction_status,
+                                            pdf_url: dataObj.pdf_url,
+                                        },
+                                        dataType: "json",
+                                        success: function(response) {
+                                            if (response.sukses) {
+                                                alert(response.sukses);
+                                                window.location.reload();
+                                            }
+                                        },
+                                        error: function(response) {
+                                            console.log(response.responseText)
                                         }
                                     });
                                 }
-
-                            }
-                        });
-                    } else {
-                        Swal.fire({
-                            title: 'Error',
-                            text: "Transaksi Gagal. " + result.message,
-                            type: 'error',
-                        }).then((result) => {
-
-                        });
-                    }
-                },
-                error: function(jqxhr, status, exception) {
-                    Swal.fire({
-                        title: 'Error',
-                        text: "Transaksi Gagal",
-                        type: 'error',
-                    }).then((result) => {
-                        if (result.value) {
-                            location.reload();
+                            });
                         }
-                    });
-                }
-            });
+                    }
+                });
+            } else {
+                Swal.fire({
+                    title: 'Error',
+                    text: "Transaksi Gagal. " + result.message,
+                    type: 'error',
+                }).then((result) => {
+
+                });
+            }
         });
     });
 </script>

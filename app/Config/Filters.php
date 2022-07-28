@@ -27,6 +27,7 @@ class Filters extends BaseConfig
         'auth' => \App\Filters\Auth::class,
         'isLoggedIn' => \App\Filters\Auth::class,
         'role' => \App\Filters\Admin::class,
+        'role2' => \App\Filters\Operator::class,
     ];
 
     /**
@@ -72,13 +73,19 @@ class Filters extends BaseConfig
         'isLoggedIn' => [
             'before' =>
             [
-                '/daftar/*', '/daftar_diskon/*', 'banner/create', 'banner/update', 'banner/index', 'galeri/create', 'galeri/update', 'galeri/index', 'payment/*',
+                '/daftar/*', '/daftar_diskon/*', 'banner/create', 'banner/update', 'banner/index', 'galeri/create', 'galeri/update', 'galeri/index', 'payment/*', 'home/history'
             ]
         ],
         'role' => [
             'before' =>
             [
-                'banner/create', 'banner/update', 'banner/index', 'galeri/create', 'galeri/update', 'galeri/index',
+                'banner/create', 'banner/update', 'banner/index', 'galeri/create', 'galeri/update', 'galeri/index'
+            ]
+        ],
+        'role2' => [
+            'before' =>
+            [
+                'home/history'
             ]
         ]
     ];

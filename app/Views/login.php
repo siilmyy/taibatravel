@@ -46,9 +46,9 @@
                                 <?php endif ?>
 
                                 <h3>Log in</h3>
-                                <div class="d-flex justify-content-end social_icon">
+                                <!-- <div class="d-flex justify-content-end social_icon">
                                     <span><i class="fab fa-google-plus-square"></i></span>
-                                </div>
+                                </div> -->
                             </div>
                             <?= form_open('Auth/login') ?>
                             <div class="logincard card-body">

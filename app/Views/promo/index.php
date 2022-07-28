@@ -10,7 +10,7 @@
                 </div>
                 <div class="card-body">
 
-                    <table class="table table-responsive ">
+                    <table class="table table-responsive " id="example">
                         <thead class="">
                             <th>No</th>
                             <th>banner</th>
@@ -51,4 +51,11 @@
         </div>
     </div>
 </section>
+<?= $this->endSection() ?>
+<?= $this->section('script') ?>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+</script>
 <?= $this->endSection() ?>
