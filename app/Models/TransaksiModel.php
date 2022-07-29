@@ -23,4 +23,11 @@ class TransaksiModel extends Model
     {
         return $this->table('transaksi')->join('userbaru', 'id_user=id_user')->where('id_user', $id_user)->get();
     }
+
+    public function getUsers($id = false)
+    {
+        if ($id !== false) {
+            return $this->where(['id_user' => $id])->first();
+        }
+    }
 }

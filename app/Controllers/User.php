@@ -3,6 +3,9 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\UserModel;
+
+define('_TITLE', 'Profil');
 
 class User extends BaseController
 {
@@ -11,6 +14,7 @@ class User extends BaseController
         helper('form');
         $this->validation = \Config\Services::validation();
         $this->session = session();
+        $this->usermodel = new UserModel();
     }
 
     public function index($id_user)
@@ -27,8 +31,10 @@ class User extends BaseController
     {
         // $model = new \App\Models\UserModel();
         // $users = $model->find($id_user);
-
-        return view('user/view');
+        $data = [
+            "title" => _TITLE,
+        ];
+        return view('user/view', $data);
     }
 
     public function riwayat()
